@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Demo</title>
+</head>
+<body>
+    <p>hola123</p>
+    <button id="logout">Logout</button>
+    <script>
+        const logoutBtn = document.getElementById('logout');
+        logoutBtn.addEventListener('click', async e => {
+            e.preventDefault();
+            const response = await fetch('/logout');
+            const data = await response.json();
+            alert(data.response);
+            if (data.status === 'success') {
+                location.reload();
+            }
+        })
+    </script>
+</body>
+</html>
